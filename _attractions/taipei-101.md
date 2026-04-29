@@ -3,6 +3,8 @@ title: 台北 101
 location: 台北市信義區
 summary: 曾經的世界第一高樓，台北最具代表性的地標。
 cover: /assets/images/taipei-101.jpg
+x: 58
+y: 18
 ---
 
 台北 101 是位於台北市信義區的摩天大樓，總高 508 公尺，於 2004 年完工啟用，

@@ -42,6 +42,72 @@ body {
   margin: 0;
 }
 
+/* Map */
+.map-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 24px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #e6eef3;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.taiwan-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  text-decoration: none;
+  color: inherit;
+  z-index: 2;
+}
+.pin-dot {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: #d9534f;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  margin: 0 auto;
+  transition: transform 0.15s;
+}
+.pin-label {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  white-space: nowrap;
+  margin-bottom: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+.map-pin:hover .pin-dot,
+.map-pin:focus .pin-dot {
+  transform: scale(1.3);
+}
+.map-pin:hover .pin-label,
+.map-pin:focus .pin-label {
+  opacity: 1;
+}
+
+.section-title {
+  text-align: center;
+  margin: 40px 0 0;
+  font-size: 22px;
+  color: #555;
+}
+
 /* Grid */
 .grid {
   display: grid;

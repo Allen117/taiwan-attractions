@@ -31,6 +31,8 @@ title: 日月潭
 location: 南投縣魚池鄉
 summary: 一句話介紹，會顯示在首頁卡片。
 cover: /assets/images/sun-moon-lake.jpg
+x: 50      # 地圖 pin 的水平位置（0=左, 100=右）
+y: 55      # 地圖 pin 的垂直位置（0=上, 100=下）
 ---
 
 這裡開始寫詳細介紹，支援 Markdown 語法。
@@ -44,6 +46,16 @@ cover: /assets/images/sun-moon-lake.jpg
 
 3. 把對應的圖片放到 `assets/images/` 資料夾
 4. push 到 GitHub，網站會自動更新
+
+### 怎麼找出 pin 在地圖上的座標
+
+在網站網址後面加上 `?coords` 進入座標選取模式，例如：
+
+```
+https://allen117.github.io/taiwan-attractions/?coords
+```
+
+然後直接點地圖上想放 pin 的位置，會跳出對話框顯示要貼到 front matter 的 `x:` / `y:` 數值，複製貼上即可。
 
 ## 部署到 GitHub Pages
 
