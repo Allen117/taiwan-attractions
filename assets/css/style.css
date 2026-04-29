@@ -1,3 +1,12 @@
+/* Theme — change these to recolor the map */
+:root {
+  --county-fill:          #2c5f4f;  /* 已有景點縣市的填色 */
+  --county-fill-hover:    #d9534f;  /* 滑鼠移上時的顏色 */
+  --county-fill-active:   #d9534f;  /* 目前所在縣市的顏色 */
+  --county-fill-disabled: #cdd5db;  /* 尚無景點縣市 (灰色) */
+  --county-stroke:        #ffffff;  /* 縣市邊界線 */
+}
+
 * { box-sizing: border-box; }
 
 body {
@@ -65,31 +74,31 @@ body {
   height: auto;
   max-height: 80vh;
 }
-.taiwan-svg-map .county-link path,
-.taiwan-svg-map .county-disabled {
-  stroke: #fff;
+.taiwan-svg-map path {
+  stroke: var(--county-stroke);
   stroke-width: 1;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
   transition: fill 0.15s;
+  fill: var(--county-fill-disabled);
 }
 .taiwan-svg-map .county-disabled {
-  fill: #cdd5db;
+  fill: var(--county-fill-disabled);
   cursor: default;
 }
 .taiwan-svg-map .county-link {
   cursor: pointer;
 }
 .taiwan-svg-map .county-link path {
-  fill: #2c5f4f;
+  fill: var(--county-fill);
 }
 .taiwan-svg-map .county-link:hover path,
 .taiwan-svg-map .county-link:focus path {
-  fill: #d9534f;
+  fill: var(--county-fill-hover);
 }
 .taiwan-svg-map .county-link.is-active path,
 .taiwan-svg-map .county-disabled.is-active {
-  fill: #d9534f;
+  fill: var(--county-fill-active);
 }
 
 /* County page */
