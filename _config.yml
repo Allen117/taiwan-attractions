@@ -1,0 +1,15 @@
+title: 台灣景點介紹
+description: 介紹台灣各地的特色景點
+lang: zh-TW
+
+collections:
+  attractions:
+    output: true
+    permalink: /attractions/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: attractions
+    values:
+      layout: attraction

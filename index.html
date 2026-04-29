@@ -1,0 +1,28 @@
+---
+layout: default
+title: 首頁
+---
+
+<section class="hero">
+  <h1>探索台灣之美</h1>
+  <p>從北到南，發現台灣最值得造訪的景點</p>
+</section>
+
+<section class="grid">
+  {% for attraction in site.attractions %}
+    <a href="{{ attraction.url | relative_url }}" class="card">
+      {% if attraction.cover %}
+        <img src="{{ attraction.cover | relative_url }}" alt="{{ attraction.title }}">
+      {% endif %}
+      <div class="card-body">
+        <h2>{{ attraction.title }}</h2>
+        {% if attraction.location %}
+          <p class="meta">📍 {{ attraction.location }}</p>
+        {% endif %}
+        {% if attraction.summary %}
+          <p>{{ attraction.summary }}</p>
+        {% endif %}
+      </div>
+    </a>
+  {% endfor %}
+</section>
