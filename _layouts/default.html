@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | {{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% unless page.skip_auth %}
+  <script>
+    (function () {
+      if (sessionStorage.getItem('tw-auth') !== '1') {
+        window.location.replace('{{ "/" | relative_url }}');
+      }
+    })();
+  </script>
+  {% endunless %}
 </head>
 <body>
   <header class="site-header">

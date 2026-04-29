@@ -1,0 +1,35 @@
+---
+layout: default
+title: 首頁
+permalink: /HomePage/
+---
+
+<section class="hero">
+  <h1>裕仁去過哪 - 台灣</h1>
+  <p>記錄走過台灣的每一步</p>
+</section>
+
+<section class="map-container">
+  <p class="map-hint">點擊縣市查看簡介 → 深色 = 已收錄景點，淡色 = 尚無景點</p>
+  {% include taiwan-map.html %}
+</section>
+
+<h2 class="section-title">所有景點</h2>
+<section class="grid">
+  {% for attraction in site.attractions %}
+    <a href="{{ attraction.url | relative_url }}" class="card">
+      {% if attraction.cover %}
+        <img src="{{ attraction.cover | relative_url }}" alt="{{ attraction.title }}">
+      {% endif %}
+      <div class="card-body">
+        <h2>{{ attraction.title }}</h2>
+        {% if attraction.location %}
+          <p class="meta">📍 {{ attraction.location }}</p>
+        {% endif %}
+        {% if attraction.summary %}
+          <p>{{ attraction.summary }}</p>
+        {% endif %}
+      </div>
+    </a>
+  {% endfor %}
+</section>
