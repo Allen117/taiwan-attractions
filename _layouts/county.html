@@ -1,0 +1,48 @@
+---
+layout: default
+---
+{% assign slug = page.slug %}
+{% assign info = site.data.counties | where: "slug", slug | first %}
+{% assign attractions = site.attractions | where: "county", slug %}
+
+<section class="county-hero">
+  <p class="breadcrumb"><a href="{{ '/' | relative_url }}">← 回首頁</a></p>
+  <h1>{{ page.title }}</h1>
+  {% if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
+</section>
+
+<div class="county-map-wrap">
+  <div class="county-map county-map--zoom">
+    {% include taiwan-map.html active=slug zoom=true %}
+  </div>
+  <div class="county-map county-map--overview">
+    <h3>位置</h3>
+    {% include taiwan-map.html active=slug %}
+  </div>
+</div>
+
+<section class="county-content">
+  {{ content }}
+</section>
+
+<h2 class="section-title">{{ page.title }}景點 ({{ attractions.size }})</h2>
+<section class="grid">
+  {% for attraction in attractions %}
+    <a href="{{ attraction.url | relative_url }}" class="card">
+      {% if attraction.cover %}
+        <img src="{{ attraction.cover | relative_url }}" alt="{{ attraction.title }}">
+      {% endif %}
+      <div class="card-body">
+        <h2>{{ attraction.title }}</h2>
+        {% if attraction.location %}
+          <p class="meta">📍 {{ attraction.location }}</p>
+        {% endif %}
+        {% if attraction.summary %}
+          <p>{{ attraction.summary }}</p>
+        {% endif %}
+      </div>
+    </a>
+  {% else %}
+    <p class="empty-msg">這個縣市尚未新增景點。</p>
+  {% endfor %}
+</section>

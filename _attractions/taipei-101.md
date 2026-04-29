@@ -1,5 +1,6 @@
 ---
 title: 台北 101
+county: taipei
 location: 台北市信義區
 summary: 曾經的世界第一高樓，台北最具代表性的地標。
 cover: /assets/images/taipei-101.jpg

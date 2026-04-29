@@ -1,0 +1,38 @@
+{%- comment -%}
+  Renders the clickable Taiwan SVG map.
+  Optional include params:
+    active: county slug to highlight
+    zoom:   "true" to zoom viewBox to the active county's bbox
+{%- endcomment -%}
+{%- assign active = include.active -%}
+{%- assign viewbox = "0 0 1440 2055" -%}
+{%- if active and include.zoom -%}
+  {%- assign ac = site.data.counties | where: "slug", active | first -%}
+  {%- if ac.bbox -%}
+    {%- assign pad = 40 -%}
+    {%- assign vx = ac.bbox[0] | minus: pad -%}
+    {%- assign vy = ac.bbox[1] | minus: pad -%}
+    {%- assign vw = ac.bbox[2] | plus: pad | plus: pad -%}
+    {%- assign vh = ac.bbox[3] | plus: pad | plus: pad -%}
+    {%- assign viewbox = vx | append: " " | append: vy | append: " " | append: vw | append: " " | append: vh -%}
+  {%- endif -%}
+{%- endif -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="{{ viewbox }}" class="taiwan-svg-map" preserveAspectRatio="xMidYMid meet" role="img" aria-label="台灣縣市地圖">
+  <g class="counties">
+    {%- for c in site.data.counties -%}
+      {%- assign page = site.counties | where: "slug", c.slug | first -%}
+      {%- assign cls = "" -%}
+      {%- if c.slug == active -%}{%- assign cls = cls | append: " is-active" -%}{%- endif -%}
+      {%- if page -%}
+        <a class="county-link{{ cls }}" href="{{ page.url | relative_url }}" data-slug="{{ c.slug }}">
+          <title>{{ c.zh }}</title>
+          <path d="{{ c.d }}" />
+        </a>
+      {%- else -%}
+        <path class="county-disabled{{ cls }}" d="{{ c.d }}" data-slug="{{ c.slug }}">
+          <title>{{ c.zh }}</title>
+        </path>
+      {%- endif -%}
+    {%- endfor -%}
+  </g>
+</svg>

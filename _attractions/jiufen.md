@@ -1,5 +1,6 @@
 ---
 title: 九份老街
+county: new-taipei
 location: 新北市瑞芳區
 summary: 山城裡的紅燈籠與石階，懷舊氛圍滿溢的老街。
 cover: /assets/images/jiufen.jpg

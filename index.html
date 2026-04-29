@@ -8,32 +8,10 @@ title: 首頁
   <p>記錄走過台灣的每一步</p>
 </section>
 
-<section class="map-container" id="map-container">
-  <img src="{{ '/assets/images/taiwan-map.png' | relative_url }}" alt="台灣地圖" class="taiwan-map">
-  {% for attraction in site.attractions %}
-    {% if attraction.x and attraction.y %}
-      <a href="{{ attraction.url | relative_url }}"
-         class="map-pin"
-         style="left: {{ attraction.x }}%; top: {{ attraction.y }}%;">
-        <span class="pin-dot"></span>
-        <span class="pin-label">{{ attraction.title }}</span>
-      </a>
-    {% endif %}
-  {% endfor %}
+<section class="map-container">
+  <p class="map-hint">點擊縣市查看該地景點 → 已有景點的縣市以深色標示</p>
+  {% include taiwan-map.html %}
 </section>
-
-<script>
-  // 開發小工具：在網址加 ?coords 後，點地圖會跳出座標供複製到 front matter
-  if (location.search.includes('coords')) {
-    document.getElementById('map-container').addEventListener('click', function(e) {
-      if (e.target.closest('.map-pin')) return;
-      var rect = this.getBoundingClientRect();
-      var x = ((e.clientX - rect.left) / rect.width * 100).toFixed(2);
-      var y = ((e.clientY - rect.top) / rect.height * 100).toFixed(2);
-      prompt('複製到景點 .md 的 front matter:', 'x: ' + x + '\ny: ' + y);
-    });
-  }
-</script>
 
 <h2 class="section-title">所有景點</h2>
 <section class="grid">

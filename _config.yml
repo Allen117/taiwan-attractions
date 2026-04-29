@@ -6,6 +6,9 @@ collections:
   attractions:
     output: true
     permalink: /attractions/:name/
+  counties:
+    output: true
+    permalink: /counties/:name/
 
 defaults:
   - scope:
@@ -13,3 +16,8 @@ defaults:
       type: attractions
     values:
       layout: attraction
+  - scope:
+      path: ""
+      type: counties
+    values:
+      layout: county

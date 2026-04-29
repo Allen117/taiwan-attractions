@@ -44,61 +44,120 @@ body {
 
 /* Map */
 .map-container {
-  position: relative;
-  max-width: 900px;
+  max-width: 540px;
   margin: 0 auto 24px;
+  padding: 16px;
   border-radius: 10px;
-  overflow: hidden;
   background: #e6eef3;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-.taiwan-map {
-  width: 100%;
-  height: auto;
-  display: block;
+.map-hint {
+  text-align: center;
+  font-size: 13px;
+  color: #557;
+  margin: 0 0 12px;
 }
 
-.map-pin {
-  position: absolute;
-  transform: translate(-50%, -100%);
-  text-decoration: none;
-  color: inherit;
-  z-index: 2;
-}
-.pin-dot {
+/* SVG Taiwan map — clickable counties */
+.taiwan-svg-map {
   display: block;
-  width: 16px;
-  height: 16px;
-  background: #d9534f;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  margin: 0 auto;
-  transition: transform 0.15s;
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
 }
-.pin-label {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.85);
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 13px;
-  white-space: nowrap;
-  margin-bottom: 6px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s;
+.taiwan-svg-map .county-link path,
+.taiwan-svg-map .county-disabled {
+  stroke: #fff;
+  stroke-width: 1;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition: fill 0.15s;
 }
-.map-pin:hover .pin-dot,
-.map-pin:focus .pin-dot {
-  transform: scale(1.3);
+.taiwan-svg-map .county-disabled {
+  fill: #cdd5db;
+  cursor: default;
 }
-.map-pin:hover .pin-label,
-.map-pin:focus .pin-label {
-  opacity: 1;
+.taiwan-svg-map .county-link {
+  cursor: pointer;
+}
+.taiwan-svg-map .county-link path {
+  fill: #2c5f4f;
+}
+.taiwan-svg-map .county-link:hover path,
+.taiwan-svg-map .county-link:focus path {
+  fill: #d9534f;
+}
+.taiwan-svg-map .county-link.is-active path,
+.taiwan-svg-map .county-disabled.is-active {
+  fill: #d9534f;
+}
+
+/* County page */
+.county-hero {
+  text-align: center;
+  padding: 24px 20px 8px;
+}
+.county-hero h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+.county-hero .lead {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}
+.breadcrumb {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+.breadcrumb a {
+  color: #2c5f4f;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.county-map-wrap {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+  margin: 0 auto 32px;
+  max-width: 900px;
+}
+.county-map {
+  background: #e6eef3;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.county-map h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #557;
+  text-align: center;
+}
+.county-map--overview .taiwan-svg-map {
+  max-height: 320px;
+}
+.county-content {
+  max-width: 700px;
+  margin: 0 auto 24px;
+  padding: 0 20px;
+}
+.empty-msg {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  grid-column: 1 / -1;
+  padding: 24px;
+}
+
+@media (max-width: 720px) {
+  .county-map-wrap {
+    grid-template-columns: 1fr;
+  }
 }
 
 .section-title {
@@ -186,6 +245,14 @@ body {
   padding: 24px 0;
   border-top: 1px solid #e5e5e5;
   margin-top: 40px;
+}
+.site-footer .attribution {
+  font-size: 12px;
+  color: #aaa;
+  margin: 4px 0 0;
+}
+.site-footer .attribution a {
+  color: #888;
 }
 
 /* Tablet/mobile */
