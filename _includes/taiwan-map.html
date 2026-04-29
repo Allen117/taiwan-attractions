@@ -21,11 +21,13 @@
   <g class="counties">
     {%- for c in site.data.counties -%}
       {%- assign page = site.counties | where: "slug", c.slug | first -%}
+      {%- assign attractions = site.attractions | where: "county", c.slug -%}
       {%- assign cls = "" -%}
       {%- if c.slug == active -%}{%- assign cls = cls | append: " is-active" -%}{%- endif -%}
+      {%- if attractions.size == 0 -%}{%- assign cls = cls | append: " is-empty" -%}{%- endif -%}
       {%- if page -%}
         <a class="county-link{{ cls }}" href="{{ page.url | relative_url }}" data-slug="{{ c.slug }}">
-          <title>{{ c.zh }}</title>
+          <title>{{ c.zh }}{% if attractions.size > 0 %}（{{ attractions.size }} 個景點）{% endif %}</title>
           <path d="{{ c.d }}" />
         </a>
       {%- else -%}

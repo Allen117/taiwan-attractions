@@ -1,9 +1,10 @@
 /* Theme — change these to recolor the map */
 :root {
   --county-fill:          #2c5f4f;  /* 已有景點縣市的填色 */
+  --county-fill-empty:    #9bb3a6;  /* 已建頁面但尚無景點 (淡綠) */
   --county-fill-hover:    #d9534f;  /* 滑鼠移上時的顏色 */
   --county-fill-active:   #d9534f;  /* 目前所在縣市的顏色 */
-  --county-fill-disabled: #cdd5db;  /* 尚無景點縣市 (灰色) */
+  --county-fill-disabled: #cdd5db;  /* 完全未開啟頁面 (灰色) */
   --county-stroke:        #ffffff;  /* 縣市邊界線 */
 }
 
@@ -91,6 +92,9 @@ body {
 }
 .taiwan-svg-map .county-link path {
   fill: var(--county-fill);
+}
+.taiwan-svg-map .county-link.is-empty path {
+  fill: var(--county-fill-empty);
 }
 .taiwan-svg-map .county-link:hover path,
 .taiwan-svg-map .county-link:focus path {
