@@ -132,12 +132,14 @@ body {
 }
 
 .county-map-wrap {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 24px;
-  align-items: start;
+  display: flex;
+  justify-content: center;
   margin: 0 auto 32px;
   max-width: 900px;
+}
+.county-map-wrap .county-map {
+  width: 100%;
+  max-width: 600px;
 }
 .county-map {
   background: #e6eef3;
@@ -168,8 +170,8 @@ body {
 }
 
 @media (max-width: 720px) {
-  .county-map-wrap {
-    grid-template-columns: 1fr;
+  .county-map-wrap .county-map {
+    max-width: 100%;
   }
 }
 
