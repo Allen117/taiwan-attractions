@@ -5,11 +5,24 @@ permalink: /HomePage/
 ---
 
 <section class="hero">
-  <h1>裕仁去過哪 - 台灣</h1>
-  <p>記錄走過台灣的每一步</p>
+  <h1>裕仁去過哪</h1>
+  <p>選擇要查看的國家</p>
 </section>
 
-<section class="map-container">
-  <p class="map-hint">點擊縣市查看簡介 → 深色 = 已收錄景點，淡色 = 尚無景點</p>
-  {% include taiwan-map.html %}
+<section class="country-grid">
+  <a href="{{ '/HomePage/Taiwan/' | relative_url }}" class="country-card country-card--tw">
+    <span class="country-card__flag">🇹🇼</span>
+    <h2>台灣</h2>
+    <p>22 個縣市</p>
+  </a>
+  <a href="{{ '/HomePage/Japan/' | relative_url }}" class="country-card country-card--jp">
+    <span class="country-card__flag">🇯🇵</span>
+    <h2>日本</h2>
+    <p>4 大區域 + 沖繩</p>
+  </a>
+  <a href="{{ '/HomePage/Malaysia/' | relative_url }}" class="country-card country-card--my">
+    <span class="country-card__flag">🇲🇾</span>
+    <h2>馬來西亞</h2>
+    <p>13 州</p>
+  </a>
 </section>

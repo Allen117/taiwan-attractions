@@ -1,5 +1,5 @@
-title: 裕仁去過哪 - 台灣
-description: 介紹台灣各地的特色景點
+title: 裕仁去過哪
+description: 記錄走過的足跡 — 台灣、日本、馬來西亞
 lang: zh-TW
 
 collections:
@@ -9,6 +9,12 @@ collections:
   counties:
     output: true
     permalink: /counties/:name/
+  jp_regions:
+    output: true
+    permalink: /jp-regions/:name/
+  my_states:
+    output: true
+    permalink: /my-states/:name/
 
 defaults:
   - scope:
@@ -21,3 +27,13 @@ defaults:
       type: counties
     values:
       layout: county
+  - scope:
+      path: ""
+      type: jp_regions
+    values:
+      layout: jp_region
+  - scope:
+      path: ""
+      type: my_states
+    values:
+      layout: my_state

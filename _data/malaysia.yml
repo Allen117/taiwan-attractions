@@ -1,0 +1,43 @@
+# 馬來西亞：13 州（不含聯邦直轄區）
+# slug 用於 URL 與 _my_states/ collection 對應
+# 西馬（馬來半島）
+- slug: perlis
+  zh: 玻璃市
+  region: 西馬
+- slug: kedah
+  zh: 吉打
+  region: 西馬
+- slug: penang
+  zh: 檳城
+  region: 西馬
+- slug: perak
+  zh: 霹靂
+  region: 西馬
+- slug: kelantan
+  zh: 吉蘭丹
+  region: 西馬
+- slug: terengganu
+  zh: 登嘉樓
+  region: 西馬
+- slug: pahang
+  zh: 彭亨
+  region: 西馬
+- slug: selangor
+  zh: 雪蘭莪
+  region: 西馬
+- slug: negeri-sembilan
+  zh: 森美蘭
+  region: 西馬
+- slug: malacca
+  zh: 馬六甲
+  region: 西馬
+- slug: johor
+  zh: 柔佛
+  region: 西馬
+# 東馬（婆羅洲）
+- slug: sarawak
+  zh: 砂拉越
+  region: 東馬
+- slug: sabah
+  zh: 沙巴
+  region: 東馬

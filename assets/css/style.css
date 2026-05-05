@@ -324,8 +324,115 @@ body {
   margin: 12px 0 0;
 }
 
+/* Country selector grid (/HomePage/) */
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 16px auto 60px;
+  padding: 0 20px;
+}
+.country-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 36px 20px;
+  border-radius: 12px;
+  background: #fff;
+  text-decoration: none;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-top: 6px solid #2c5f4f;
+}
+.country-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.country-card h2 {
+  margin: 0;
+  font-size: 24px;
+}
+.country-card p {
+  margin: 0;
+  color: #888;
+  font-size: 14px;
+}
+.country-card__flag {
+  font-size: 56px;
+  line-height: 1;
+}
+.country-card--tw { border-top-color: #2c5f4f; }
+.country-card--jp { border-top-color: #bc002d; }
+.country-card--my { border-top-color: #cc0001; }
+
+/* Region / state grid (Japan, Malaysia) */
+.region-grid-section {
+  margin-bottom: 20px;
+}
+.region-grid-section__title {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #557;
+  text-align: center;
+}
+.region-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+}
+.region-grid--jp {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+.region-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 64px;
+  padding: 12px 10px;
+  border-radius: 8px;
+  background: var(--county-fill);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.15s, transform 0.15s;
+}
+.region-tile:hover,
+.region-tile:focus {
+  background: var(--county-fill-hover);
+  transform: translateY(-1px);
+}
+.region-tile.is-empty {
+  background: var(--county-fill-empty);
+}
+.region-tile.is-active {
+  background: var(--county-fill-active);
+}
+.region-tile--disabled {
+  background: var(--county-fill-disabled);
+  color: #555;
+  cursor: default;
+}
+.region-tile--disabled:hover {
+  background: var(--county-fill-disabled);
+  transform: none;
+}
+.region-tile__count {
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
 /* Tablet/mobile */
 @media (max-width: 600px) {
   .hero h1 { font-size: 28px; }
   .attraction { padding: 24px 20px; }
+  .country-card { padding: 24px 16px; }
+  .country-card__flag { font-size: 44px; }
 }

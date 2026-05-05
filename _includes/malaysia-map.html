@@ -1,0 +1,60 @@
+{%- comment -%}
+  Renders Malaysia as a clickable state grid, split into 西馬 / 東馬.
+  Optional include params:
+    active: state slug to highlight
+{%- endcomment -%}
+{%- assign active = include.active -%}
+{%- assign west = site.data.malaysia | where: "region", "西馬" -%}
+{%- assign east = site.data.malaysia | where: "region", "東馬" -%}
+
+<div class="region-grid-section">
+  <h3 class="region-grid-section__title">西馬（馬來半島）</h3>
+  <div class="region-grid region-grid--my" role="list">
+    {%- for s in west -%}
+      {%- assign state_page = site.my_states | where: "slug", s.slug | first -%}
+      {%- assign state_attractions = site.attractions | where: "country", "malaysia" | where: "state", s.slug -%}
+      {%- assign base_cls = "" -%}
+      {%- if s.slug == active -%}{%- assign base_cls = base_cls | append: " is-active" -%}{%- endif -%}
+      {%- if state_page -%}
+        {%- assign link_cls = base_cls -%}
+        {%- if state_attractions.size == 0 -%}{%- assign link_cls = link_cls | append: " is-empty" -%}{%- endif -%}
+        <a class="region-tile{{ link_cls }}" href="{{ state_page.url | relative_url }}" role="listitem">
+          <span class="region-tile__name">{{ s.zh }}</span>
+          {%- if state_attractions.size > 0 -%}
+            <span class="region-tile__count">{{ state_attractions.size }}</span>
+          {%- endif -%}
+        </a>
+      {%- else -%}
+        <span class="region-tile region-tile--disabled{{ base_cls }}" role="listitem">
+          <span class="region-tile__name">{{ s.zh }}</span>
+        </span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<div class="region-grid-section">
+  <h3 class="region-grid-section__title">東馬（婆羅洲）</h3>
+  <div class="region-grid region-grid--my" role="list">
+    {%- for s in east -%}
+      {%- assign state_page = site.my_states | where: "slug", s.slug | first -%}
+      {%- assign state_attractions = site.attractions | where: "country", "malaysia" | where: "state", s.slug -%}
+      {%- assign base_cls = "" -%}
+      {%- if s.slug == active -%}{%- assign base_cls = base_cls | append: " is-active" -%}{%- endif -%}
+      {%- if state_page -%}
+        {%- assign link_cls = base_cls -%}
+        {%- if state_attractions.size == 0 -%}{%- assign link_cls = link_cls | append: " is-empty" -%}{%- endif -%}
+        <a class="region-tile{{ link_cls }}" href="{{ state_page.url | relative_url }}" role="listitem">
+          <span class="region-tile__name">{{ s.zh }}</span>
+          {%- if state_attractions.size > 0 -%}
+            <span class="region-tile__count">{{ state_attractions.size }}</span>
+          {%- endif -%}
+        </a>
+      {%- else -%}
+        <span class="region-tile region-tile--disabled{{ base_cls }}" role="listitem">
+          <span class="region-tile__name">{{ s.zh }}</span>
+        </span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>

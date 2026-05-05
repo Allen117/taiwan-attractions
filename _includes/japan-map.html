@@ -1,0 +1,28 @@
+{%- comment -%}
+  Renders Japan as a clickable region grid (4 main islands + Okinawa).
+  Optional include params:
+    active: region slug to highlight
+{%- endcomment -%}
+{%- assign active = include.active -%}
+<div class="region-grid region-grid--jp" role="list">
+  {%- for r in site.data.japan -%}
+    {%- assign region_page = site.jp_regions | where: "slug", r.slug | first -%}
+    {%- assign region_attractions = site.attractions | where: "country", "japan" | where: "region", r.slug -%}
+    {%- assign base_cls = "" -%}
+    {%- if r.slug == active -%}{%- assign base_cls = base_cls | append: " is-active" -%}{%- endif -%}
+    {%- if region_page -%}
+      {%- assign link_cls = base_cls -%}
+      {%- if region_attractions.size == 0 -%}{%- assign link_cls = link_cls | append: " is-empty" -%}{%- endif -%}
+      <a class="region-tile{{ link_cls }}" href="{{ region_page.url | relative_url }}" role="listitem">
+        <span class="region-tile__name">{{ r.zh }}</span>
+        {%- if region_attractions.size > 0 -%}
+          <span class="region-tile__count">{{ region_attractions.size }}</span>
+        {%- endif -%}
+      </a>
+    {%- else -%}
+      <span class="region-tile region-tile--disabled{{ base_cls }}" role="listitem">
+        <span class="region-tile__name">{{ r.zh }}</span>
+      </span>
+    {%- endif -%}
+  {%- endfor -%}
+</div>

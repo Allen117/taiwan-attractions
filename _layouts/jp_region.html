@@ -2,18 +2,17 @@
 layout: default
 ---
 {% assign slug = page.slug %}
-{% assign info = site.data.counties | where: "slug", slug | first %}
-{% assign attractions = site.attractions | where: "county", slug %}
+{% assign attractions = site.attractions | where: "country", "japan" | where: "region", slug %}
 
 <section class="county-hero">
-  <p class="breadcrumb"><a href="{{ '/HomePage/Taiwan/' | relative_url }}">← 回台灣地圖</a></p>
+  <p class="breadcrumb"><a href="{{ '/HomePage/Japan/' | relative_url }}">← 回日本地圖</a></p>
   <h1>{{ page.title }}</h1>
   {% if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
 </section>
 
 <div class="county-map-wrap">
-  <div class="county-map county-map--zoom">
-    {% include taiwan-map.html active=slug zoom=true %}
+  <div class="county-map">
+    {% include japan-map.html active=slug %}
   </div>
 </div>
 

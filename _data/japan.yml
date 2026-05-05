@@ -1,0 +1,12 @@
+# 日本：四大主島 + 沖繩
+# slug 用於 URL 與 _jp_regions/ collection 對應
+- slug: hokkaido
+  zh: 北海道
+- slug: honshu
+  zh: 本州
+- slug: shikoku
+  zh: 四國
+- slug: kyushu
+  zh: 九州
+- slug: okinawa
+  zh: 沖繩
