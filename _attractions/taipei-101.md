@@ -3,7 +3,7 @@ title: 台北 101
 county: taipei
 location: 台北市信義區
 summary: 曾經的世界第一高樓，台北最具代表性的地標。
-cover: /assets/images/taipei-101.jpg
+cover: /assets/images/台北101.png
 x: 58
 y: 18
 ---
@@ -20,8 +20,6 @@ y: 18
 ## 交通方式
 
 搭乘台北捷運紅線至「台北 101 / 世貿站」，4 號出口出站即達。
-
-![台北 101 夜景](/assets/images/taipei-101-night.jpg)
 
 ## 開放時間
 
