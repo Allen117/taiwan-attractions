@@ -68,16 +68,18 @@ body {
   margin: 0 0 12px;
 }
 
-/* SVG clickable maps — Taiwan counties / Japan regions */
+/* SVG clickable maps — Taiwan counties / Japan regions / Malaysia states */
 .taiwan-svg-map,
-.japan-svg-map {
+.japan-svg-map,
+.malaysia-svg-map {
   display: block;
   width: 100%;
   height: auto;
   max-height: 80vh;
 }
 .taiwan-svg-map path,
-.japan-svg-map path {
+.japan-svg-map path,
+.malaysia-svg-map path {
   stroke: var(--county-stroke);
   stroke-width: 1;
   stroke-linejoin: round;
@@ -86,33 +88,51 @@ body {
   fill: var(--county-fill-disabled);
 }
 .taiwan-svg-map .county-disabled,
-.japan-svg-map .region-disabled {
+.japan-svg-map .region-disabled,
+.malaysia-svg-map .region-disabled {
   fill: var(--county-fill-disabled);
   cursor: default;
 }
 .taiwan-svg-map .county-link,
-.japan-svg-map .region-link {
+.japan-svg-map .region-link,
+.malaysia-svg-map .region-link {
   cursor: pointer;
 }
 .taiwan-svg-map .county-link path,
-.japan-svg-map .region-link path {
+.japan-svg-map .region-link path,
+.malaysia-svg-map .region-link path {
   fill: var(--county-fill);
 }
 .taiwan-svg-map .county-link.is-empty path,
-.japan-svg-map .region-link.is-empty path {
+.japan-svg-map .region-link.is-empty path,
+.malaysia-svg-map .region-link.is-empty path {
   fill: var(--county-fill-empty);
 }
 .taiwan-svg-map .county-link:hover path,
 .taiwan-svg-map .county-link:focus path,
 .japan-svg-map .region-link:hover path,
-.japan-svg-map .region-link:focus path {
+.japan-svg-map .region-link:focus path,
+.malaysia-svg-map .region-link:hover path,
+.malaysia-svg-map .region-link:focus path {
   fill: var(--county-fill-hover);
 }
 .taiwan-svg-map .county-link.is-active path,
 .taiwan-svg-map .county-disabled.is-active,
 .japan-svg-map .region-link.is-active path,
-.japan-svg-map .region-disabled.is-active {
+.japan-svg-map .region-disabled.is-active,
+.malaysia-svg-map .region-link.is-active path,
+.malaysia-svg-map .region-disabled.is-active {
   fill: var(--county-fill-active);
+}
+.malaysia-svg-map .region-label {
+  font-size: 18px;
+  font-weight: 600;
+  fill: #557;
+  text-anchor: middle;
+}
+.malaysia-svg-map .region-label--group {
+  font-size: 22px;
+  fill: #345;
 }
 
 /* County page */
@@ -164,10 +184,12 @@ body {
   text-align: center;
 }
 .county-map--overview .taiwan-svg-map,
-.county-map--overview .japan-svg-map {
+.county-map--overview .japan-svg-map,
+.county-map--overview .malaysia-svg-map {
   max-height: 320px;
 }
-.county-map .japan-svg-map {
+.county-map .japan-svg-map,
+.county-map .malaysia-svg-map {
   max-height: 420px;
 }
 .county-content {
