@@ -17,9 +17,27 @@ layout: default
     {{ content }}
   </div>
 
-  {%- assign back_county = site.counties | where: "slug", page.county | first -%}
-  {%- if back_county -%}
-    <p><a href="{{ back_county.url | relative_url }}">← 回到{{ back_county.title }}</a></p>
+  {%- if page.country == "japan" and page.region -%}
+    {%- assign back_region = site.jp_regions | where: "slug", page.region | first -%}
+    {%- if back_region -%}
+      <p><a href="{{ back_region.url | relative_url }}">← 回到{{ back_region.title }}</a></p>
+    {%- else -%}
+      <p><a href="{{ '/HomePage/Japan/' | relative_url }}">← 回日本地圖</a></p>
+    {%- endif -%}
+  {%- elsif page.country == "malaysia" and page.state -%}
+    {%- assign back_state = site.my_states | where: "slug", page.state | first -%}
+    {%- if back_state -%}
+      <p><a href="{{ back_state.url | relative_url }}">← 回到{{ back_state.title }}</a></p>
+    {%- else -%}
+      <p><a href="{{ '/HomePage/Malaysia/' | relative_url }}">← 回馬來西亞地圖</a></p>
+    {%- endif -%}
+  {%- elsif page.county -%}
+    {%- assign back_county = site.counties | where: "slug", page.county | first -%}
+    {%- if back_county -%}
+      <p><a href="{{ back_county.url | relative_url }}">← 回到{{ back_county.title }}</a></p>
+    {%- else -%}
+      <p><a href="{{ '/HomePage/Taiwan/' | relative_url }}">← 回台灣地圖</a></p>
+    {%- endif -%}
   {%- else -%}
     <p><a href="{{ '/HomePage/' | relative_url }}">← 回首頁</a></p>
   {%- endif %}
